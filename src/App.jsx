@@ -5,9 +5,13 @@ export default function Portfolio() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const scrollToSection = (section) => {
-    setActiveSection(section);
+  const scrollToSection = (sectionId) => {
+    setActiveSection(sectionId);
     setMobileMenuOpen(false);
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   };
 
   const handleDownloadResume = () => {
@@ -80,7 +84,7 @@ export default function Portfolio() {
       </nav>
 
       {/* Hero Section */}
-      <section className="pt-32 pb-20 px-4 relative overflow-hidden">
+      <section id="home" className="pt-32 pb-20 px-4 relative overflow-hidden">
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
           <div className="absolute w-96 h-96 bg-blue-500/20 rounded-full blur-3xl -top-20 -right-20"></div>
           <div className="absolute w-96 h-96 bg-cyan-500/20 rounded-full blur-3xl -bottom-20 -left-20"></div>
@@ -89,12 +93,8 @@ export default function Portfolio() {
         <div className="max-w-4xl mx-auto relative z-10">
           <div className="flex flex-col md:flex-row items-center gap-8 mb-8">
             <div className="flex-shrink-0">
-              <div className="w-48 h-48 rounded-full border-4 border-blue-400 flex items-center justify-center shadow-lg overflow-hidden">
-                <img 
-                  src="/profile.jpg"
-                  alt="Sampath Kumar"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-48 h-48 rounded-full border-4 border-blue-400 bg-gradient-to-br from-blue-500 to-cyan-500 flex items-center justify-center shadow-lg">
+                <span className="text-7xl font-bold text-white">SK</span>
               </div>
             </div>
             <div className="flex-1">
@@ -128,7 +128,7 @@ export default function Portfolio() {
       </section>
 
       {/* About Section */}
-      <section className="py-20 px-4 bg-slate-800/50">
+      <section id="about" className="py-20 px-4 bg-slate-800/50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">About Me</h2>
           <div className="grid md:grid-cols-2 gap-12">
@@ -149,7 +149,7 @@ export default function Portfolio() {
               <h3 className="text-xl font-bold mb-4">Quick Stats</h3>
               <div className="space-y-3">
                 <div>
-                  <p className="text-blue-400 text-2xl font-bold">6+</p>
+                  <p className="text-blue-400 text-2xl font-bold">5+</p>
                   <p className="text-gray-400">Production Projects</p>
                 </div>
                 <div>
@@ -167,7 +167,7 @@ export default function Portfolio() {
       </section>
 
       {/* Projects Section */}
-      <section className="py-20 px-4">
+      <section id="projects" className="py-20 px-4">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">Featured Projects</h2>
           <div className="space-y-8">
@@ -244,7 +244,7 @@ export default function Portfolio() {
       </section>
 
       {/* Skills Section */}
-      <section className="py-20 px-4 bg-slate-800/50">
+      <section id="skills" className="py-20 px-4 bg-slate-800/50">
         <div className="max-w-4xl mx-auto">
           <h2 className="text-4xl font-bold mb-12">Skills</h2>
           <div className="grid md:grid-cols-2 gap-8">
@@ -272,13 +272,13 @@ export default function Portfolio() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 px-4">
+      <section id="contact" className="py-20 px-4">
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-4xl font-bold mb-8">Get In Touch</h2>
           <p className="text-gray-300 mb-12 max-w-2xl mx-auto">
             I'm always interested in hearing about new projects and opportunities. Feel free to reach out!
           </p>
-          <div className="flex justify-center gap-6 mb-8 flex-wrap">
+          <div className="flex justify-center gap-6 mb-8">
             <a
               href="mailto:sampathkumarmuthyalapati@gmail.com"
               className="flex items-center gap-2 bg-blue-600 hover:bg-blue-700 px-6 py-3 rounded-lg transition-colors"
